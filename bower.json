@@ -1,7 +1,5 @@
 {
-  "name": "v",
-  "private": true,
+  "name": "metagraph",
   "dependencies": {
-    "jquery": "~1.11.1"
   }
 }

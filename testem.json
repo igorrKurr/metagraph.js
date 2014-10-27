@@ -1,9 +1,8 @@
 {
     "framework": "qunit",
     "src_files": [
-      "bower_components/jquery/dist/jquery.js",
       "test/tests.js",
-      "app/js/main.js"
+      "lib/main.js"
     ],
     "launch_in_ci": [
       "PhantomJS"

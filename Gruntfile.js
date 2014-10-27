@@ -10,7 +10,7 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [
-          'app/**/*.js'
+          'lib/**/*.js'
         ],
         dest: 'dist/<%= pkg.name.replace(".js", "") %>.js'
       }
@@ -26,21 +26,19 @@ module.exports = function(grunt) {
       }
     },
 
-    jshint: {
-      files: ['dist/factory-bot.js'],
-      options: {
-        globals: {
-          console: true,
-          module: true,
-          document: true
-        },
-        jshintrc: '.jshintrc'
-      }
-    },
+    // jshint: {
+    //   files: ['dist/factory-bot.js'],
+    //   options: {
+    //     globals: {
+    //       console: true,
+    //       module: true,
+    //       document: true
+    //     },
+    //     jshintrc: '.jshintrc'
+    //   }
+    // },
 
     watch: {
-      // files: ['<%= jshint.files %>'],
-      // tasks: ['concat', 'jshint', 'qunit'],
       js: {
         files: ['app/js/main.js'],
         tasks: ['copy:js']
@@ -52,27 +50,33 @@ module.exports = function(grunt) {
     },
 
     copy: {
-      js: {
-        src: 'app/js/main.js',
-        dest: 'example/app/scripts/main.js'
-      },
-      css: {
-        src: 'app/css/main.css',
-        dest: 'example/app/styles/main.css'
+      rails: {
+        src: 'dist/metagraph.js',
+        dest: '../metagraph/vendor/metagraph.js'
+      }
+    },
+
+    testem: {
+      test: {
+        src: ['lib/**/*.js', "test/**/*.js"],
+        options: {
+          parallel: 8,
+          launch_in_ci: ['PhantomJS'],
+          launch_in_dev: ['Chrome']
+        }
       }
     }
-
   });
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-qunit');
+  // grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-testem');
 
-  grunt.registerTask('test', ['jshint', 'qunit']);
+  grunt.registerTask('test', ['testem:ci:test']);
   grunt.registerTask('default', ['concat', 'jshint', 'qunit', 'uglify']);
-  grunt.registerTask('example', ['concat', 'copy']);
-  grunt.registerTask('dev', ['watch']);
+  grunt.registerTask('build', ['test','concat', 'uglify']);
+  // grunt.registerTask('dev', ['watch']);
 };
