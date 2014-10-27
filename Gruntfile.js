@@ -58,7 +58,7 @@ module.exports = function(grunt) {
 
     testem: {
       test: {
-        src: ['lib/**/*.js', "test/**/*.js"],
+        src: ['lib/**/*.js', "test/**/*.js", 'test/helpers/**/*.js'],
         options: {
           parallel: 8,
           launch_in_ci: ['PhantomJS'],
