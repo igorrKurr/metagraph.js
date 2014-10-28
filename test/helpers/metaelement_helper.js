@@ -1,3 +1,5 @@
+var MetaElement = require('metaelement');
+
 function stubGraph(){
   var els = [],
       els1 = [],

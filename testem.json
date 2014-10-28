@@ -5,6 +5,7 @@
       "lib/main.js",
       "test/helpers/**/*.js"
     ],
+    "test_page": "test/tests.html",
     "launch_in_ci": [
       "PhantomJS"
     ]

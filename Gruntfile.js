@@ -61,6 +61,7 @@ module.exports = function(grunt) {
         src: ['lib/**/*.js', "test/**/*.js", 'test/helpers/**/*.js'],
         options: {
           parallel: 8,
+          test_page: 'test/tests.html',
           launch_in_ci: ['PhantomJS'],
           launch_in_dev: ['Chrome']
         }
@@ -75,8 +76,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-testem');
 
-  grunt.registerTask('test', ['testem:ci:test']);
+  grunt.registerTask('test', ['concat', 'testem:ci:test']);
   grunt.registerTask('default', ['concat', 'jshint', 'qunit', 'uglify']);
-  grunt.registerTask('build', ['test','concat', 'uglify']);
+  grunt.registerTask('build', ['test', 'concat', 'uglify']);
   // grunt.registerTask('dev', ['watch']);
 };
