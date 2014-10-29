@@ -97,7 +97,7 @@ define(function () {
       this.addChild = function(child) {
         this.children.push(child);
         child.parents.push(this);
-      }
+      };
 
       this.hasChildren = function() {
         return this.children.length > 0;
@@ -118,7 +118,7 @@ define(function () {
         var condition = Math.sqrt( Math.pow((this.x - element.x), 2) + Math.pow((this.y - element.y), 2)) > (this.radius + element.radius);
         return !condition;
       };
-    }
+    };
 });
 
 define(function () {
@@ -127,11 +127,11 @@ define(function () {
       proto.vertices = [];
       proto.addVertices = function(array) {
         this.vertices = array;
-      }
+      };
       proto.levels = function () {
-        if(!this.vertices.length > 0) {return;}
+        if(this.vertices.length === 0) {return;}
         return Metagraph.levels(this.vertices);
-      }
+      };
     };
 
     Metagraph.levels = function (array) {
@@ -144,29 +144,29 @@ define(function () {
         var array = [],
             i;
 
-        for (var i = prevArray.length - 1; i >= 0; i--) {
+        for (i = prevArray.length - 1; i >= 0; i--) {
           if (!prevArray[i].hasChildren()) {continue;}
           array = array.concat(prevArray[i].children);
-        };
+        }
 
-        if (!array.length > 0) {return;}
+        if (array.length === 0) {return;}
         counter = counter + 1;
         init['level' + counter] = array;
 
         return recursionOverChildren(array, counter, init);
-      }
+      };
 
       init['level' + counter] = zeroLevel;
       recursionOverChildren(zeroLevel, counter, init);
 
       return init;
-    }
+    };
 
     Metagraph.roots = function (array) {
       return array.filter(function(el){
-        if (el.parents.length == 0) {return el;};
-      })
-    }
+        if (el.parents.length === 0) {return el;}
+      });
+    };
 
     return Metagraph;
 });
