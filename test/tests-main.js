@@ -14,13 +14,10 @@ require.config({
     }
 });
 
-// require the unit tests.
 require(
     ['QUnit', 'metaelement-test'],
     function(QUnit, metaelementTest) {
-        // run the tests.
         metaelementTest.run();
-        // start QUnit.
         QUnit.load();
         QUnit.start();
     }
