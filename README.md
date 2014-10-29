@@ -1,3 +1,3 @@
-# DOM GAME
+# Metagraph.js
 
-Lib for JS game building
+Toolset for metagraph visualization.
