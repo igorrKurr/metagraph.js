@@ -1,10 +1,10 @@
 {
     "framework": "qunit",
     "src_files": [
-      "test/tests.js",
-      "lib/main.js",
-      "test/helpers/**/*.js"
+      "test/**/*.js",
+      "lib/**/*.js"
     ],
+    "test_page": "test/tests.html",
     "launch_in_ci": [
       "PhantomJS"
     ]

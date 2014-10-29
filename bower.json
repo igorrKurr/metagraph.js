@@ -1,5 +1,8 @@
 {
   "name": "metagraph",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "requirejs": "~2.1.15",
+    "qunit": "~1.15.0"
   }
 }
