@@ -5,7 +5,6 @@ define(
       var run = function() {
           test('.levels', function(){
             expect(3);
-
             var division = Metagraph.levels(stubGraph());
 
             equal(division['level0'].length, 5);
