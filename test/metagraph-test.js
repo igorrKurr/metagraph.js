@@ -3,29 +3,32 @@ define(
     ['../lib/metagraph', 'helpers/stub-graph'],
     function(Metagraph, Stub) {
       var run = function() {
-          test('#levels inner', function(){
-            expect(3);
+        var meta;
+        module('Metagraph', {
+          setup: function(){
+            meta = Metagraph();
+          }
+        });
 
-            var meta = Metagraph();
-            meta.addVertices(Stub.stubGraphInner());
+        test('#levels inner', function(){
+          expect(3);
+          meta.addVertices(Stub.stubGraphInner());
 
-            var division = meta.levels('inner');
-            equal(division['level0'].length, 5);
-            equal(division['level1'].length, 3);
-            equal(division['level2'].length, 2);
-          });
+          var division = meta.levels('inner');
+          equal(division['level0'].length, 5);
+          equal(division['level1'].length, 3);
+          equal(division['level2'].length, 2);
+        });
 
-          test('#levels', function(){
-            expect(3);
+        test('#levels', function(){
+          expect(3);
+          meta.addVertices(Stub.stubGraph());
 
-            var meta = Metagraph();
-            meta.addVertices(Stub.stubGraph());
-
-            var division = meta.levels();
-            equal(division['level0'].length, 5);
-            equal(division['level1'].length, 3);
-            equal(division['level2'].length, 2);
-          });
+          var division = meta.levels();
+          equal(division['level0'].length, 5);
+          equal(division['level1'].length, 3);
+          equal(division['level2'].length, 2);
+        });
       };
       return {run: run}
     }
