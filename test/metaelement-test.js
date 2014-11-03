@@ -8,8 +8,8 @@ define(
         test('#findRoots', function(){
           expect(2);
 
-          var meta = new MetaElement('a');
-          var meta1 = new MetaElement('b');
+          var meta = MetaElement('a');
+          var meta1 = MetaElement('b');
           meta.addParentInner(meta1);
 
           deepEqual(meta.findRoots(), [meta1]);
@@ -19,8 +19,8 @@ define(
         test('#levels', function(){
           expect(4);
 
-          var meta = new MetaElement('a');
-          var meta1 = new MetaElement('b');
+          var meta = MetaElement('a');
+          var meta1 = MetaElement('b');
           meta.addParentInner(meta1);
 
           var division = meta.levels();
