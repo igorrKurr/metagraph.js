@@ -1,30 +1,17 @@
 "use strict";
 define(
-    ['../lib/metaelement', '../lib/metagraph', 'helpers/stub-graph'],
+    ['../lib/metaelement'],
     function(MetaElement, Metagraph, Stub) {
       var run = function() {
-          test('#levels inner', function(){
-            expect(3);
+          test('#findRoot', function(){
+            expect(2);
 
-            var meta = Metagraph();
-            meta.addVertices(Stub.stubGraphInner());
+            var meta = new MetaElement('a');
+            var meta1 = new MetaElement('b');
+            meta.addParentInner(meta1);
 
-            var division = meta.levels('inner');
-            equal(division['level0'].length, 5);
-            equal(division['level1'].length, 3);
-            equal(division['level2'].length, 2);
-          });
-
-          test('#levels', function(){
-            expect(3);
-
-            var meta = Metagraph();
-            meta.addVertices(Stub.stubGraph());
-
-            var division = meta.levels();
-            equal(division['level0'].length, 5);
-            equal(division['level1'].length, 3);
-            equal(division['level2'].length, 2);
+            deepEqual(meta.findRoot(), meta1);
+            deepEqual(meta.findRoot(), meta1);
           });
       };
       return {run: run}

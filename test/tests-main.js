@@ -15,9 +15,10 @@ require.config({
 });
 
 require(
-    ['QUnit', 'metaelement-test'],
-    function(QUnit, metaelementTest) {
+    ['QUnit', 'metaelement-test', 'metagraph-test'],
+    function(QUnit, metaelementTest, metagraphTest) {
         metaelementTest.run();
+        metagraphTest.run();
         QUnit.load();
         QUnit.start();
     }
