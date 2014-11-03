@@ -3,14 +3,18 @@ define(
     ['../lib/metaelement'],
     function(MetaElement, Metagraph, Stub) {
       var run = function() {
-        module('MetaElement');
+        var meta1, meta;
+
+        module('MetaElement', {
+          setup: function() {
+            meta = MetaElement('a');
+            meta1 = MetaElement('b');
+            meta.addParentInner(meta1);
+          }
+        });
 
         test('#findRoots', function(){
           expect(2);
-
-          var meta = MetaElement('a');
-          var meta1 = MetaElement('b');
-          meta.addParentInner(meta1);
 
           deepEqual(meta.findRoots(), [meta1]);
           deepEqual(meta1.findRoots(), [meta1]);
@@ -18,10 +22,6 @@ define(
 
         test('#levels', function(){
           expect(4);
-
-          var meta = MetaElement('a');
-          var meta1 = MetaElement('b');
-          meta.addParentInner(meta1);
 
           var division = meta.levels();
           deepEqual(division['level0'], [meta1]);
