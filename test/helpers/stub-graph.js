@@ -9,7 +9,7 @@ define(
             els2 = [];
 
         for (var i = 0; i < 5; i++) {
-          els.push(new MetaElement('a' + i.toString()));
+          els.push(MetaElement('a' + i.toString()));
         }
 
         for (var i = 0; i < 3; i++) {
