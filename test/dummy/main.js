@@ -1,6 +1,6 @@
 require(
-    ['./lib/metagraph'],
+    ['metagraph'],
     function(Metagraph) {
-      console.log(Metagraph);
+      Metagraph().render('#renderTo', 500, 500);
     }
 );

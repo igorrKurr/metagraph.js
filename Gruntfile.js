@@ -46,6 +46,10 @@ module.exports = function(grunt) {
       css: {
         files: ['app/css/main.css'],
         tasks: ['copy:css']
+      },
+      dev: {
+        files: ['lib/*.js'],
+        tasks: ['requirejs', 'copy:dev']
       }
     },
 
@@ -53,6 +57,10 @@ module.exports = function(grunt) {
       rails: {
         src: 'dist/metagraph.js',
         dest: '../metagraph/vendor/metagraph.js'
+      },
+      dev: {
+        src: 'dist/metagraph.js',
+        dest: 'test/dummy/metagraph.js'
       }
     },
 
@@ -70,6 +78,18 @@ module.exports = function(grunt) {
           launch_in_dev: ['Chrome']
         }
       }
+    },
+
+    requirejs: {
+      compile: {
+        options: {
+          name: "metagraph",
+          baseUrl: "lib/",
+          mainConfigFile: "config.js",
+          // name: "path/to/almond", // assumes a production build using almond
+          out: "dist/metagraph.js"
+        }
+      }
     }
   });
 
@@ -80,9 +100,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-testem');
+  grunt.loadNpmTasks('grunt-contrib-requirejs');
 
   grunt.registerTask('test', ['concat', 'jshint', 'testem:test:ci']);
   grunt.registerTask('default', ['concat', 'jshint', 'qunit', 'uglify']);
-  grunt.registerTask('build', ['test', 'concat', 'uglify']);
+  grunt.registerTask('build', ['test', 'requirejs']);
+  grunt.registerTask('prepare', ['requirejs', 'copy:dev']);
+  grunt.registerTask('dev', ['watch:dev']);
+
   // grunt.registerTask('dev', ['watch']);
 };
