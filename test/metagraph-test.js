@@ -29,6 +29,13 @@ define(
           equal(division['level1'].length, 3);
           equal(division['level2'].length, 2);
         });
+
+        test('#levels inner', function(){
+          expect(2);
+          meta.addVertices(Stub.stubGraphInner());
+          equal(meta.vertices.length, 10);
+          deepEqual(meta.vertices[0].graph, meta);
+        });
       };
       return {run: run}
     }

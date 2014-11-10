@@ -1,7 +1,8 @@
 "use strict";
 require.config({
     paths: {
-        'QUnit': '../bower_components/qunit/qunit/qunit'
+        'QUnit': '../bower_components/qunit/qunit/qunit',
+        'd3': '../bower_components/d3/d3'
     },
     shim: {
        'QUnit': {
@@ -10,7 +11,10 @@ require.config({
                QUnit.config.autoload = false;
                QUnit.config.autostart = false;
            }
-       }
+       },
+       'd3':{
+        exports: 'd3'
+      }
     }
 });
 
