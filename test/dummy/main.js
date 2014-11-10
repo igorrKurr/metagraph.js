@@ -22,6 +22,6 @@ require(
         var rs = els1.concat(els).concat(els2);
 
       m.addVertices(rs);
-      m.render('#renderTo', 500, 500);
+      m.render('#renderTo', 1000, 1000);
     }
 );
