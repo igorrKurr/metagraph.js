@@ -19,10 +19,11 @@ require.config({
 });
 
 require(
-    ['QUnit', 'metaelement-test', 'metagraph-test'],
-    function(QUnit, metaelementTest, metagraphTest) {
+    ['QUnit', 'metaelement-test', 'metagraph-test', 'edge-test'],
+    function(QUnit, metaelementTest, metagraphTest, edgeTest) {
         metaelementTest.run();
         metagraphTest.run();
+        edgeTest.run();
         QUnit.load();
         QUnit.start();
     }
