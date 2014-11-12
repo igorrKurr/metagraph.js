@@ -11,23 +11,25 @@ define(
         });
 
         test('#levels inner', function(){
-          expect(3);
+          expect(4);
           meta.addVertices(Stub.stubGraphInner());
 
           var division = meta.levels('inner');
-          equal(division['level0'].length, 5);
-          equal(division['level1'].length, 3);
-          equal(division['level2'].length, 2);
+          equal(division[0].length, 5);
+          equal(division[1].length, 3);
+          equal(division[2].length, 2);
+          equal(division.length, 3);
         });
 
         test('#levels', function(){
-          expect(3);
+          expect(4);
           meta.addVertices(Stub.stubGraph());
 
           var division = meta.levels();
-          equal(division['level0'].length, 5);
-          equal(division['level1'].length, 3);
-          equal(division['level2'].length, 2);
+          equal(division[0].length, 5);
+          equal(division[1].length, 3);
+          equal(division[2].length, 2);
+          equal(division.length, 3);
         });
 
         test('#addVertices', function(){
@@ -43,9 +45,9 @@ define(
           meta.addVertices(Stub.stubGraph())
           var division = meta.levels();
 
-          equal(division['level0'][0].getLevel(), 0);
-          equal(division['level1'][0].getLevel(), 1);
-          equal(division['level2'][0].getLevel(), 2);
+          equal(division[0][0].getLevel(), 0);
+          equal(division[1][0].getLevel(), 1);
+          equal(division[2][0].getLevel(), 2);
         });
       };
       return {run: run}
