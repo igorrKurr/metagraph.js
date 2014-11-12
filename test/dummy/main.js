@@ -13,14 +13,16 @@ require(
 
         for (var i = 0; i < 3; i++) {
           els1.push(Metagraph.MetaElement('b' + i.toString()));
-          els1[i].addParent(els[Math.ceil(Math.random() * 4)]);
           els1[i].appendTo(m);
+          var rand = els[Math.ceil(Math.random() * 4)]
+          els1[i].addParent(rand);
+          m.addEdge(Metagraph.Edge(rand, els1[i]));
         }
 
         for (var i = 0; i < 2; i++) {
           els2.push(Metagraph.MetaElement('c' + i.toString()));
-          els2[i].addParent(els1[Math.ceil(Math.random() * 2)]);
           els2[i].appendTo(m);
+          els2[i].addParent(els1[Math.ceil(Math.random() * 2)]);
         }
         var rs = els1.concat(els).concat(els2);
 
