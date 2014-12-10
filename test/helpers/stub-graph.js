@@ -46,6 +46,30 @@ define(
         var rs = els1.concat(els).concat(els2);
 
         return rs;
+      },
+      ternovoyExample: function (){
+        var els = [];
+
+        els.push(MetaElement('a1'));//0
+        els.push(MetaElement('b1'));//1
+        els.push(MetaElement('b2'));//2
+        els.push(MetaElement('c1'));//3
+        els.push(MetaElement('c2'));//4
+        els.push(MetaElement('d1'));//5
+        els.push(MetaElement('d2'));//6
+        els.push(MetaElement('d3'));//7
+
+        els[1].addParent(els[0]);
+        els[2].addParent(els[0]);
+        els[3].addParent(els[1]);
+        els[4].addParent(els[2]);
+        els[5].addParent(els[3]);
+        els[6].addParent(els[2]);
+        els[6].addParent(els[4]);
+        els[6].addParent(els[3]);
+        els[7].addParent(els[4]);
+
+        return els;
       }
     }
   }

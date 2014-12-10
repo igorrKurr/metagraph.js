@@ -32,6 +32,21 @@ define(
           equal(division.length, 3);
         });
 
+        test('Test Ternovoy Example', function(){
+          expect(5);
+          meta.addVertices(Stub.ternovoyExample());
+
+          var division = meta.levels();
+          console.log(division);
+
+          equal(division[0].length, 1);
+          equal(division[1].length, 2);
+          equal(division[2].length, 3);
+          equal(division[3].length, 2);
+
+          equal(division.length, 4);
+        });
+
         test('#addVertices', function(){
           expect(2);
           meta.addVertices(Stub.stubGraphInner());

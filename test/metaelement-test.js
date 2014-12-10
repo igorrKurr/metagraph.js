@@ -22,17 +22,17 @@ define(
           deepEqual(meta1.findRoots(), [meta1]);
         });
 
-        test('#levels', function(){
-          expect(4);
+        // test('#levels', function(){
+        //   expect(4);
 
-          var division = meta.levels();
-          deepEqual(division[0], [meta1]);
-          deepEqual(division[1], [meta]);
+        //   var division = meta.levels();
+        //   deepEqual(division[0], [meta1]);
+        //   deepEqual(division[1], [meta]);
 
-          var division1 = meta1.levels();
-          deepEqual(division1[0], [meta1]);
-          deepEqual(division1[1], [meta]);
-        });
+        //   var division1 = meta1.levels();
+        //   deepEqual(division1[0], [meta1]);
+        //   deepEqual(division1[1], [meta]);
+        // });
 
         test('#getLevel', function(){
           expect(3);
